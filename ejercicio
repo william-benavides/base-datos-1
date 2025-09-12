@@ -14,3 +14,52 @@ CREATE TABLE users (
 );
 
  INSERT INTO users (ide_number,firstname,lastname,mobile_number, email, password  ) VALUES ('1089242589', 'sebastian', 'bacca','3186919441','sebas@gmail.com','1234');
+
+Table countries {
+  id integer
+  name varchar
+  code varchar
+  abrev varchar
+  create_at timestamp
+  update_at timestamp
+  deleted_at timestamp
+}
+Table departments {
+  id integer
+  id_countries varchar
+  name varchar
+  code varchar
+  abrev varchar
+  create_at timestamp
+  update_at timestamp
+  deleted_at timestamp
+}
+Table cities {
+  id integer
+  id_departments varchar
+  name varchar
+  code varchar
+  abrev varchar
+  create_at timestamp
+  update_at timestamp
+  deleted_at timestamp
+}
+Table users {
+  id integer [primary key]
+  id_city integer
+  ident_number varchar
+  firstname varchar
+  lastname varchar
+  address varchar
+  mobile_number varchar
+  email varchar
+  password varchar
+  status boolean
+  create_at timestamp
+  update_at timestamp
+  deleted_at timestamp
+}
+
+Ref: users.id > cities.id
+Ref: cities.id_departments < departments.id
+Ref: departments.id_countries < countries.id 
